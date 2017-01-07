@@ -27,7 +27,7 @@
   :author "William Yao <williamyaoh@gmail.com>"
   :maintainer "William Yao <williamyaoh@gmail.com>"
   :description "C-style escape directives for Common Lisp."
-  :version "1.0.0"
+  :version "1.1.0"
   :serial t
   :depends-on ("named-readtables")
   :components ((:file "packages")
