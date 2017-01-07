@@ -26,7 +26,7 @@ Fun! To use it, use one of the two readtables, either
 `:trivial-escapes-readtable` or `:trivial-escapes-readtable-mixin`.
 
 ```lisp
-(named-readtables:in-readtable :trivial-escapes-readtable
+(named-readtables:in-readtable :trivial-escapes-readtable)
 ```
 
 In most cases, `:trivial-escapes-readtable` is probably what you want. It's just
