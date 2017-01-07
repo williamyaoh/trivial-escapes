@@ -2,7 +2,7 @@
 
 Copyright (c) 2017 William Yao
 
-## Description and Usage
+## Description and usage
 
 Ever been annoyed by the fact that Common Lisp doesn't interpret escape
 characters the same way that literally every other programming language does?
