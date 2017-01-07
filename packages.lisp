@@ -22,14 +22,14 @@
 ;;;;                           Copyright (c) 2017                               
 ;;;;
 
-(in-package #:asdf)
-(defsystem #:trivial-escapes
-  :author "William Yao <williamyaoh@gmail.com>"
-  :maintainer "William Yao <williamyaoh@gmail.com>"
-  :description "C-style escape directives for Common Lisp."
-  :version "1.0.0"
-  :serial t
-  :depends-on ("named-readtables")
-  :components ((:file "packages")
-               (:file "escaping-pains")
-               (:file "readtable")))
+(defpackage #:trivial-escapes
+  (:nicknames #:trivesc)
+  (:use #:cl)
+  (:shadow #:readtable
+           #:readtable-mixin
+           #:dq-readtable
+           #:dq-readtable-mixin)
+  (:export #:readtable
+           #:readtable-mixin
+           #:dq-readtable
+           #:dq-readtable-mixin))

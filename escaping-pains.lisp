@@ -22,8 +22,6 @@
 ;;;;                           Copyright (c) 2017                               
 ;;;;
 
-(defpackage #:trivial-escapes
-  (:use #:cl))
 (in-package #:trivial-escapes)
 
 (defun simple-escape (char)
@@ -75,7 +73,7 @@
     ,@(apply #'append *octal-escapes*)
     #\x ,#'hex-read))
 
-(defun read-string-escaping (stream char numarg)
+(defun read-string-escaping (stream char &optional numarg)
   (declare (ignorable char numarg))
   (with-output-to-string (s)
     (loop for char = (read-char stream t nil t)

@@ -10,7 +10,7 @@ Hey, me too!
 
 So I wrote this library.
 
-It provides a readtable (two, actually) that lets you write strings like this:
+It provides a readtable (four, actually) that lets you write strings like this:
 
 ```lisp
 #"This string has\na newline in it!"
@@ -22,16 +22,24 @@ It provides a readtable (two, actually) that lets you write strings like this:
  => "一生懸命"
 ```
 
-Fun! To use it, use one of the two readtables, either
-`:trivial-escapes-readtable` or `:trivial-escapes-readtable-mixin`.
+Fun! To use it, use one of the exported readtables. In most cases,
+`TRIVIAL-ESCAPES:READTABLE` is probably the one you want, containing the
+standard readtable, with a dispatch function for `#\# #\"` added in.
 
 ```lisp
-(named-readtables:in-readtable :trivial-escapes-readtable)
+(named-readtables:in-readtable trivesc:readtable)
 ```
 
-In most cases, `:trivial-escapes-readtable` is probably what you want. It's just
-the standard readtable with a dispatch function for `#\# #\"` added in.
-`:trivial-escapes-readtable-mixin` has *just* the dispatch function in it.
+However, if you need them, there are three other provided readtables as well.
+`TRIVIAL-ESCAPES:READTABLE-MIXIN` contains *just* the dispatch function for
+`#\# #\"` (this means that it doesn't contain **any** other reader macros!
+as in, `#\(` will no longer start s-expressions, for example.), and similarly,
+`TRIVIAL-ESCAPES:DQ-READTABLE-MIXIN` contains *just* a reader macro for `#\"`,
+replacing the normal string reading.
+
+`TRIVIAL-ESCAPES:READTABLE` and `TRIVIAL-ESCAPES:DQ-READTABLE` simple fuse
+the standard readtable with their respective mixins, creating actually usable
+readtables. In most cases, one of these two is what you want.
 
 **TRIVIAL-ESCAPES** contains all the *standard* C escapes sequences, shown
 [here](https://en.wikipedia.org/wiki/Escape_sequences_in_C#Table_of_escape_sequences).

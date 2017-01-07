@@ -24,8 +24,12 @@
 
 (in-package #:trivial-escapes)
 
-(named-readtables:defreadtable :trivial-escapes-readtable-mixin
+(named-readtables:defreadtable readtable-mixin
   (:macro-char #\# :dispatch)
   (:dispatch-macro-char #\# #\" #'read-string-escaping))
-(named-readtables:defreadtable :trivial-escapes-readtable
-  (:fuse :standard :trivial-escapes-readtable-mixin))
+(named-readtables:defreadtable readtable
+  (:fuse :standard readtable-mixin))
+(named-readtables:defreadtable dq-readtable-mixin
+  (:macro-char #\" #'read-string-escaping))
+(named-readtables:defreadtable dq-readtable
+  (:fuse :standard dq-readtable-mixin))
