@@ -32,4 +32,6 @@
   (:export #:readtable
            #:readtable-mixin
            #:dq-readtable
-           #:dq-readtable-mixin))
+           #:dq-readtable-mixin
+
+           #:prompt-value))

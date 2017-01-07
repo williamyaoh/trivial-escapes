@@ -22,15 +22,16 @@
 ;;;;                           Copyright (c) 2017                               
 ;;;;
 
-(in-package #:asdf)
-(defsystem #:trivial-escapes
-  :author "William Yao <williamyaoh@gmail.com>"
-  :maintainer "William Yao <williamyaoh@gmail.com>"
-  :description "C-style escape directives for Common Lisp."
-  :version "1.0.0"
-  :serial t
-  :depends-on ("named-readtables")
-  :components ((:file "packages")
-               (:file "prompt-value")
-               (:file "escaping-pains")
-               (:file "readtable")))
+(in-package #:trivial-escapes)
+
+(defun prompt-value (&optional
+                       (input-stream *query-io*)
+                       (output-stream *query-io*)
+                       (prompt "Enter a value to use:")
+                       (eof-error-p t)
+                       (eof-value nil)
+                       (recursive-p nil))
+  "Primarily meant to be used in interactive restarts.
+   PROMPT doesn't require a trailing space."
+  (format output-stream "~A " prompt)
+  (read-line input-stream eof-error-p eof-value recursive-p))
