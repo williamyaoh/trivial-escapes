@@ -32,5 +32,6 @@
   :depends-on ("named-readtables")
   :components ((:file "packages")
                (:file "prompt-value")
+               (:file "to-char")
                (:file "escaping-pains")
                (:file "readtable")))

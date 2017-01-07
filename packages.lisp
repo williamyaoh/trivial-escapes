@@ -34,4 +34,8 @@
            #:dq-readtable
            #:dq-readtable-mixin
 
-           #:prompt-value))
+           #:prompt-value
+
+           #:to-char
+           #:no-such-char-error
+           #:code))

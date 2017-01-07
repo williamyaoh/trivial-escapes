@@ -39,7 +39,7 @@
 
 (defun octal-reader (char)
   (lambda (stream)
-    (code-char
+    (to-char
      (parse-integer
       (with-output-to-string (s)
         (write-char char s)
@@ -49,7 +49,7 @@
       :radix 8))))
 
 (defun hex-read (stream)
-  (code-char
+  (to-char
    (parse-integer
     (with-output-to-string (s)
       (loop while (hex-digit-char-p (peek-char nil stream nil nil))
