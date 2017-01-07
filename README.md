@@ -35,3 +35,7 @@ the standard readtable with a dispatch function for `#\# #\"` added in.
 
 **TRIVIAL-ESCAPES** contains all the *standard* C escapes sequences, shown
 [here](https://en.wikipedia.org/wiki/Escape_sequences_in_C#Table_of_escape_sequences).
+
+Note that as a technicality, the characters you end up with will depend upon
+whatever character encoding your Lisp environment uses. But since everyone
+seems to be standardizing on Unicode, this probably won't be a problem.
