@@ -23,7 +23,6 @@
 ;;;;
 
 (defpackage #:trivial-escapes
-  (:nicknames #:trivesc)
   (:use #:cl))
 (in-package #:trivial-escapes)
 
