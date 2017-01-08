@@ -1,0 +1,34 @@
+language: lisp
+
+env:
+  matrix:
+    - LISP=abcl
+    - LISP=ccl
+    - LISP=ccl32
+    - LISP=sbcl
+    - LISP=sbcl32
+    - LISP=cmucl
+    - LISP=ecl
+
+matrix:
+  allow_failures:
+    - env: LISP=cmucl
+    - env: LISP=ecl
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
+
+install:
+  - if [ "$LISP" = "allegro" ]; then sudo apt-get install libc6-dev-i386 libffi-dev:i386; fi
+  - curl -L https://github.com/luismbo/cl-travis/raw/master/install.sh | sh
+  - cl -e "(cl:in-package :cl-user)
+           (ql:quickload 'named-readtables)"
+
+script:
+  - cl -e "(cl:in-package :cl-user)
+           (asdf:load-system 'trivial-escapes)"
+
+# Note to self: This should probably have actual tests of the functionality,
+# limited as it is.
