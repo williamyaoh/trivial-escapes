@@ -28,6 +28,7 @@
   :maintainer "William Yao <williamyaoh@gmail.com>"
   :description "C-style escape directives for Common Lisp."
   :version "1.1.0"
+  :license "Public Domain"
   :serial t
   :depends-on ("named-readtables")
   :components ((:file "packages")
