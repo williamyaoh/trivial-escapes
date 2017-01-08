@@ -1,5 +1,7 @@
 # TRIVIAL-ESCAPES
 
+[![Build Status](https://travis-ci.org/williamyaoh/trivial-escapes.svg?branch=master)](https://travis-ci.org/williamyaoh/trivial-escapes)
+
 Copyright (c) 2017 William Yao
 
 ## Description and usage
