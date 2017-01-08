@@ -44,8 +44,8 @@
       (with-output-to-string (s)
         (write-char char s)
         (loop repeat 2
-           while (octal-digit-char-p (peek-char nil stream nil nil))
-           do (write-char (read-char stream) s)))
+              while (octal-digit-char-p (peek-char nil stream nil nil))
+              do (write-char (read-char stream) s)))
       :radix 8))))
 
 (defun hex-read (stream)
@@ -53,7 +53,7 @@
    (parse-integer
     (with-output-to-string (s)
       (loop while (hex-digit-char-p (peek-char nil stream nil nil))
-         do (write-char (read-char stream) s)))
+            do (write-char (read-char stream) s)))
     :radix 16)))
 
 (defvar *simple-escapes*
@@ -77,11 +77,11 @@
   (declare (ignorable char numarg))
   (with-output-to-string (s)
     (loop for char = (read-char stream t nil t)
-       while (char/= char #\")
-       do (write-char
-           (if (char= char #\\)
-               (funcall (getf *escape-functions*
-                              (read-char stream t nil t))
-                        stream)
-               char)
-           s))))
+          while (char/= char #\")
+          do (write-char
+              (if (char= char #\\)
+                  (funcall (getf *escape-functions*
+                                 (read-char stream t nil t))
+                           stream)
+                  char)
+              s))))
