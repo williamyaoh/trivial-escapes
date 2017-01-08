@@ -28,7 +28,8 @@ install:
 
 script:
   - cl -e "(cl:in-package :cl-user)
-           (asdf:load-system 'trivial-escapes)"
+           (handler-case (asdf:load-system 'trivial-escapes)
+             (error () (uiop:quit 1)))"
 
 # Note to self: This should probably have actual tests of the functionality,
 # limited as it is.
