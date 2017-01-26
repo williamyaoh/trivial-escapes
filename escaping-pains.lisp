@@ -82,14 +82,18 @@
 (defun read-string-escaping (stream char &optional numarg)
   (declare (ignorable char numarg))
   (with-output-to-string (s)
-    (loop for char = (read-char stream t nil t)
-          while (char/= char #\")
-          do (write-char
-              (if (char= char #\\)
-                  (let* ((next (read-char stream t nil t))
-                         (reader (getf *escape-functions* next)))
-                    (if reader
-                        (funcall reader stream)
-                        (error "No valid escape character for \\~C." next)))
-                  char)
-              s))))
+    (handler-case
+        (loop for char = (read-char stream t nil t)
+              while (char/= char #\")
+              do (write-char
+                  (if (char= char #\\)
+                      (let* ((next (read-char stream t nil t))
+                             (reader (getf *escape-functions* next)))
+                        (if reader
+                            (funcall reader stream)
+                            (error "No valid escape character for \\~C." next)))
+                      char)
+                  s))
+      (error (c)
+        (clear-input stream)
+        (error c)))))

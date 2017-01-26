@@ -1,29 +1,29 @@
 ;;                      THE LICENSE THAT'S NOT A LICENSE
 ;;                        Version 1.618, January 2017
-;; 
+;;
 ;;     Redistribution of this LICENSE is permitted, either in unmodified
 ;;         form, with no further qualifications, or in modified form,
 ;;        under the condition that the name of the license is changed.
-;; 
+;;
 ;;                      THE LICENSE THAT'S NOT A LICENSE
 ;;   TERMS AND CONDITIONS FOR USAGE, COPYING, DISTRIBUTION, AND MODIFICATION
 ;;                          OF PROVIDED SOFTWARE
-;; 
-;; 
+;;
+;;
 ;;  1. Do WHATEVER YOU WANT with the provided software.
 ;;  2. Credit is appreciated, but not required.
-;; 
-;; 
-;;     This software is provided with NO WARRANTY, implied or otherwise.        
+;;
+;;
+;;     This software is provided with NO WARRANTY, implied or otherwise.
 
 ;;;;
-;;;;                            TRIVIAL-ESCAPES                                 
-;;;;                  William Yao, <williamyaoh@gmail.com>                      
-;;;;                           Copyright (c) 2017                               
-;;;;    
+;;;;                            TRIVIAL-ESCAPES
+;;;;                  William Yao, <williamyaoh@gmail.com>
+;;;;                           Copyright (c) 2017
+;;;;
 
 (in-package #:trivial-escapes)
-    
+
 (define-condition no-such-char-error (error)
   ((code :initarg :code :accessor code)))
 
@@ -43,7 +43,12 @@
                   (if char
                       char
                       (error 'no-such-char-error :code code)))
-    (use-value (char)
-      :interactive (lambda () (list (read-from-string (prompt-value))))
-      :report "Supply a character to be used instead (in Lisp representation.)"
-      char)))
+    ;; Commented out because we don't want to provide restarts at read-time.
+    ;; Doing so makes it hard to flush *STANDARD-INPUT* when we encounter an error.
+
+    ;; (use-value (char)
+    ;;   :interactive (lambda () (list (read-from-string (prompt-value))))
+    ;;   :report "Supply a character to be used instead (in Lisp representation.)"
+    ;;   :test (lambda (c) (declare (ignore c)) nil)
+    ;;   char)
+    ))
