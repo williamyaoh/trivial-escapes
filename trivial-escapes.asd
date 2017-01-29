@@ -22,7 +22,6 @@
 ;;;;                           Copyright (c) 2017
 ;;;;
 
-(in-package #:asdf)
 (defsystem #:trivial-escapes
   :author "William Yao <williamyaoh@gmail.com>"
   :maintainer "William Yao <williamyaoh@gmail.com>"
