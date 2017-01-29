@@ -31,6 +31,8 @@
   (with-slots (code) obj
     (format stream "No valid character for code: ~S" code)))
 
+;; CODE-CHAR might either return NIL or signal an error when a code is invalid.
+;; So we standardize it to only signal an error.
 (defun to-char (code)
   "CODE-CHAR, except more portable across implementations.
    Signals a correctable error of type NO-SUCH-CHAR-ERROR if CODE does
