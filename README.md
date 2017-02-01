@@ -17,7 +17,7 @@ It provides a readtable (four, actually) that lets you write strings like this:
 
 ```lisp
 CL-USER> #"This string has\na newline in it!"
-This string has
+"This string has
 a newline in it!"
 
 CL-USER> #"\x4E00\x751F\x61F8\x547D"
