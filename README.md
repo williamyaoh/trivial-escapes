@@ -16,13 +16,12 @@ So I wrote this library.
 It provides a readtable (four, actually) that lets you write strings like this:
 
 ```lisp
-#"This string has\na newline in it!"
- =>
- "This string has
-  a newline in it!"
+CL-USER> #"This string has\na newline in it!"
+This string has
+a newline in it!"
 
-#"\x4E00\x751F\x61F8\x547D"
- => "一生懸命"
+CL-USER> #"\x4E00\x751F\x61F8\x547D"
+"一生懸命"
 ```
 
 Fun! To use it, use one of the exported readtables. In most cases,
