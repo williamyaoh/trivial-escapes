@@ -1,5 +1,6 @@
 # TRIVIAL-ESCAPES
 
+[![Quicklisp](http://quickdocs.org/badge/trivial-escapes.svg)](http://quickdocs.org/trivial-escapes/)
 [![Build Status](https://travis-ci.org/williamyaoh/trivial-escapes.svg?branch=master)](https://travis-ci.org/williamyaoh/trivial-escapes)
 
 Copyright (c) 2017 William Yao
@@ -19,7 +20,7 @@ It provides a readtable (four, actually) that lets you write strings like this:
  =>
  "This string has
   a newline in it!"
- 
+
 #"\x4E00\x751F\x61F8\x547D"
  => "一生懸命"
 ```
