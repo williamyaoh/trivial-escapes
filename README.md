@@ -1,4 +1,4 @@
-# TRIVIAL-ESCAPES [![Quicklisp](http://quickdocs.org/badge/trivial-escapes.svg)](http://quickdocs.org/trivial-escapes/) [![Build Status](https://travis-ci.org/williamyaoh/trivial-escapes.svg?branch=master)](https://travis-ci.org/williamyaoh/trivial-escapes)
+# TRIVIAL-ESCAPES [![Quicklisp](http://quickdocs.org/badge/trivial-escapes.svg)](http://quickdocs.org/trivial-escapes/) [![Build Status](https://travis-ci.org/williamyaoh/trivial-escapes.svg?branch=master)](https://travis-ci.org/williamyaoh/trivial-escapes) [![Coverage Status](https://coveralls.io/repos/github/williamyaoh/trivial-escapes/badge.svg?branch=master)](https://coveralls.io/github/williamyaoh/trivial-escapes?branch=master)
 
 Copyright (c) 2017 William Yao
 
