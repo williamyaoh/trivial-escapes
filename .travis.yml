@@ -23,7 +23,7 @@ notifications:
 install:
   - if [ "$LISP" = "allegro" ]; then sudo apt-get install libc6-dev-i386 libffi-dev:i386; fi
   - curl -L https://github.com/luismbo/cl-travis/raw/master/install.sh | sh
-  - if [ -n "$COVERALLS" ]; then git clone https://github.com/fukamachi/cl-coveralls ~/lisp/cl-coveralls
+  - if [ -n "$COVERALLS" ]; then git clone https://github.com/fukamachi/cl-coveralls ~/lisp/cl-coveralls; fi
 
 script:
   - if [ -n "$COVERALLS" ]; then
