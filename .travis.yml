@@ -1,4 +1,4 @@
-language: lisp
+language: common-lisp
 
 env:
   matrix:
@@ -41,7 +41,7 @@ script:
                    (uiop:quit 1)))"
     ; else
       cl -l named-readtables
-         -fiveam
+         -l fiveam
          -l trivial-escapes-test
          -e '(setf *debugger-hook*
                    (lambda (c h)
