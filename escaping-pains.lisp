@@ -30,10 +30,6 @@
     (declare (ignorable stream))
     char))
 
-(defun char-digit (char)
-  (- (char-code char)
-     #.(char-code #\0)))
-
 (defun octal-digit-char-p (char) (find char "01234567"))
 (defun hex-digit-char-p (char) (find char "0123456789abcdefABCDEF"))
 
