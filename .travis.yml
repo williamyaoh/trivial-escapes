@@ -34,6 +34,6 @@ script:
                  (lambda (c h)
                    (declare (ignore c h))
                    (uiop:quit 1)))'
-       -e "(coveralls:with-coveralls (:exclude (list "test"))
+       -e "(coveralls:with-coveralls (:exclude (list \"test\"))
              (or (fiveam:run! 'trivial-escapes-test:|#\"-test-cases|)
                  (uiop:quit 1)))"
