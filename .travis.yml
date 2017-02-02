@@ -1,5 +1,5 @@
 # Come on, Travis. All I want is for `Common Lisp' to show up in my build dashboard.
-language: generic
+language: common-lisp
 
 env:
   matrix:
