@@ -6,8 +6,10 @@ env:
     - LISP=abcl
     - LISP=ccl
     - LISP=ccl32
-    - LISP=sbcl COVERALLS=true
+    - LISP=sbcl
     - LISP=sbcl32
+    - LISP=ccl COVERALLS=true
+    - LISP=sbcl COVERALLS=true
     - LISP=cmucl
     - LISP=ecl
 
@@ -45,8 +47,7 @@ script:
                      (declare (ignore c h))
                      (uiop:quit 1)))'
          -e "(coveralls:with-coveralls (:exclude (list \"test\"))
-               (or (fiveam:run! 'trivial-escapes-test:|#\"-test-cases|)
-                   (uiop:quit 1)))"
+               (asdf:test-system 'trivial-escapes))"
     ; else
       cl -l named-readtables
          -l fiveam
