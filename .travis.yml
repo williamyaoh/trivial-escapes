@@ -23,9 +23,10 @@ notifications:
 install:
   - if [ "$LISP" = "allegro" ]; then sudo apt-get install libc6-dev-i386 libffi-dev:i386; fi
   - curl -L https://github.com/luismbo/cl-travis/raw/master/install.sh | sh
-  - git clone https://github.com/fukamachi/cl-coveralls ~/lisp/cl-coveralls
+  - if [ -n "$COVERALLS" ]; then git clone https://github.com/fukamachi/cl-coveralls ~/lisp/cl-coveralls
 
 script:
+  - if [ -n "$COVERALLS" ]; then
   - cl -l named-readtables
        -l fiveam
        -l cl-coveralls
@@ -37,3 +38,14 @@ script:
        -e "(coveralls:with-coveralls (:exclude (list \"test\"))
              (or (fiveam:run! 'trivial-escapes-test:|#\"-test-cases|)
                  (uiop:quit 1)))"
+  - else
+  - cl -l named-readtables
+       -fiveam
+       -l trivial-escapes-test
+       -e '(setf *debugger-hook*
+                 (lambda (c h)
+                   (declare (ignore c h))
+                   (uiop:quit 1)))'
+       -e "(or (fiveam:run! 'trivial-escapes-test:|#\"-test-cases|)
+               (uiop:quit 1))"
+  - fi
