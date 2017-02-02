@@ -27,25 +27,25 @@ install:
 
 script:
   - if [ -n "$COVERALLS" ]; then
-  - cl -l named-readtables
-       -l fiveam
-       -l cl-coveralls
-       -l trivial-escapes-test
-       -e '(setf *debugger-hook*
-                 (lambda (c h)
-                   (declare (ignore c h))
-                   (uiop:quit 1)))'
-       -e "(coveralls:with-coveralls (:exclude (list \"test\"))
-             (or (fiveam:run! 'trivial-escapes-test:|#\"-test-cases|)
-                 (uiop:quit 1)))"
-  - else
-  - cl -l named-readtables
-       -fiveam
-       -l trivial-escapes-test
-       -e '(setf *debugger-hook*
-                 (lambda (c h)
-                   (declare (ignore c h))
-                   (uiop:quit 1)))'
-       -e "(or (fiveam:run! 'trivial-escapes-test:|#\"-test-cases|)
-               (uiop:quit 1))"
-  - fi
+      cl -l named-readtables
+         -l fiveam
+         -l cl-coveralls
+         -l trivial-escapes-test
+         -e '(setf *debugger-hook*
+                   (lambda (c h)
+                     (declare (ignore c h))
+                     (uiop:quit 1)))'
+         -e "(coveralls:with-coveralls (:exclude (list \"test\"))
+               (or (fiveam:run! 'trivial-escapes-test:|#\"-test-cases|)
+                   (uiop:quit 1)))"
+    else
+      cl -l named-readtables
+         -fiveam
+         -l trivial-escapes-test
+         -e '(setf *debugger-hook*
+                   (lambda (c h)
+                     (declare (ignore c h))
+                     (uiop:quit 1)))'
+         -e "(or (fiveam:run! 'trivial-escapes-test:|#\"-test-cases|)
+                 (uiop:quit 1))"
+    fi
