@@ -3,4 +3,5 @@
         #:fiveam
 
         #:trivial-escapes)
-  (:shadowing-import-from #:trivial-escapes #:readtable))
+  (:shadowing-import-from #:trivial-escapes #:readtable)
+  (:export #:|#"-test-cases|))

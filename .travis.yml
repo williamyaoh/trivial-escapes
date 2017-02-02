@@ -23,13 +23,10 @@ notifications:
 install:
   - if [ "$LISP" = "allegro" ]; then sudo apt-get install libc6-dev-i386 libffi-dev:i386; fi
   - curl -L https://github.com/luismbo/cl-travis/raw/master/install.sh | sh
-  - cl -e "(cl:in-package :cl-user)
-           (ql:quickload 'named-readtables)"
 
 script:
-  - cl -e "(cl:in-package :cl-user)
-           (handler-case (asdf:load-system 'trivial-escapes)
-             (error () (uiop:quit 1)))"
-
-# Note to self: This should probably have actual tests of the functionality,
-# limited as it is.
+  - cl -l named-readtables
+       -l fiveam
+       -l trivial-escapes-test
+       -e "(or (fiveam:run! 'trivial-escapes-test:|#\"-test-cases|)
+               (uiop:quit 1))"
