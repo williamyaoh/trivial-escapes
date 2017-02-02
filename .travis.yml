@@ -14,6 +14,7 @@ matrix:
   allow_failures:
     - env: LISP=cmucl
     - env: LISP=ecl
+  fast_finish: true
 
 notifications:
   email:
@@ -23,7 +24,12 @@ notifications:
 install:
   - if [ "$LISP" = "allegro" ]; then sudo apt-get install libc6-dev-i386 libffi-dev:i386; fi
   - curl -L https://github.com/luismbo/cl-travis/raw/master/install.sh | sh
-  - if [ -n "$COVERALLS" ]; then git clone https://github.com/fukamachi/cl-coveralls ~/lisp/cl-coveralls; fi
+  - if [ -n "$COVERALLS" ];
+    then
+      git clone https://github.com/fukamachi/cl-coveralls ~/lisp/cl-coveralls;
+      cd ~/lisp/cl-coveralls;
+      git checkout a7dea1803f4b5aae8f939db6bbf26ab4389f71ff;
+    fi
 
 script:
   - if [ -n "$COVERALLS" ]
@@ -32,7 +38,8 @@ script:
          -l fiveam
          -l cl-coveralls
          -l trivial-escapes-test
-         -e '(setf *debugger-hook*
+         -e '(in-package #:cl-user)
+             (setf *debugger-hook*
                    (lambda (c h)
                      (declare (ignore c h))
                      (uiop:quit 1)))'
@@ -43,7 +50,8 @@ script:
       cl -l named-readtables
          -l fiveam
          -l trivial-escapes-test
-         -e '(setf *debugger-hook*
+         -e '(in-package #:cl-user)
+             (setf *debugger-hook*
                    (lambda (c h)
                      (declare (ignore c h))
                      (uiop:quit 1)))'
