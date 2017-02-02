@@ -1,0 +1,7 @@
+;; Missing hex digits.
+
+error
+#"However little known the feelings or views of such a man may be on his first entering a neighborhood,
+  \x
+  this truth is so well fixed in the minds of the surrounding families, that he is considered as the rightful
+  property of some or other of their daughters."

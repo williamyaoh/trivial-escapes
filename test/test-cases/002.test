@@ -1,0 +1,2 @@
+no-such-char-error
+#"\xFFFFFFFFFFFF some other junk"

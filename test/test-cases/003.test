@@ -1,0 +1,6 @@
+;; Invalid control character.
+
+error
+#"It is a truth universally acknowledged
+  \z
+  that a single man in possession of good fortune must be in want of a wife."

@@ -34,4 +34,5 @@
                ;; (:file "prompt-value")
                (:file "to-char")
                (:file "escaping-pains")
-               (:file "readtable")))
+               (:file "readtable"))
+  :in-order-to ((test-op (test-op "trivial-escapes-test"))))

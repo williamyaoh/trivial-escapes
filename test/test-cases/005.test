@@ -1,0 +1,4 @@
+;; Octal escapes.
+
+(format nil "~{~C~}" (mapcar #'code-char '(#o00 #o07 #o43)))
+#"\0\07\43"
