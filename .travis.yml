@@ -8,7 +8,6 @@ env:
     - LISP=ccl32
     - LISP=sbcl
     - LISP=sbcl32
-    - LISP=ccl COVERALLS=true
     - LISP=sbcl COVERALLS=true
     - LISP=cmucl
     - LISP=ecl
