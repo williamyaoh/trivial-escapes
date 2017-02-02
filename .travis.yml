@@ -26,7 +26,8 @@ install:
   - if [ -n "$COVERALLS" ]; then git clone https://github.com/fukamachi/cl-coveralls ~/lisp/cl-coveralls; fi
 
 script:
-  - if [ -n "$COVERALLS" ]; then
+  - if [ -n "$COVERALLS" ]
+    ; then
       cl -l named-readtables
          -l fiveam
          -l cl-coveralls
@@ -38,7 +39,7 @@ script:
          -e "(coveralls:with-coveralls (:exclude (list \"test\"))
                (or (fiveam:run! 'trivial-escapes-test:|#\"-test-cases|)
                    (uiop:quit 1)))"
-    else
+    ; else
       cl -l named-readtables
          -fiveam
          -l trivial-escapes-test
@@ -48,4 +49,4 @@ script:
                      (uiop:quit 1)))'
          -e "(or (fiveam:run! 'trivial-escapes-test:|#\"-test-cases|)
                  (uiop:quit 1))"
-    fi
+    ; fi
